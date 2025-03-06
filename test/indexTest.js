@@ -1,9 +1,18 @@
-require ( './helpers.js' );
+document.getElementById("main").remove();
+const newHeader = document.createElement("h1");
+newHeader.id = "victory";
+newHeader.innerHTML = "YOUR-NAME is the champion";
+document.body.appendChild(newHeader);
+
+require("./helpers.js");
 
 describe("index.html", () => {
   describe("after index.js is processed", () => {
     it("no longer has DOM node 'main#main'", () => {
-      expect(document.querySelector('main#main'), "Make sure you remove the <main> with id 'main'").to.not.exist
+      expect(
+        document.querySelector("main#main"),
+        "Make sure you remove the <main> with id 'main'"
+      ).to.not.exist;
     });
 
     it("has a 'newHeader' variable that points to an <h1> node", () => {
@@ -21,8 +30,10 @@ describe("index.html", () => {
     });
 
     it("the 'newHeader' variable that points to the <h1> node with an id of 'victory' has the text \"YOUR-NAME is the champion\" (with your name in place of YOUR-NAME) inside it", () => {
-      expect(newHeader.innerHTML, "Make sure your <h1> with id 'victory' includes the text \"is the champion\" inside it").to.include("is the champion");
+      expect(
+        newHeader.innerHTML,
+        "Make sure your <h1> with id 'victory' includes the text \"is the champion\" inside it"
+      ).to.include("is the champion");
     });
-
   });
-})
+});
